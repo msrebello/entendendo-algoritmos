@@ -1,6 +1,7 @@
 package com.github.msrebello._02;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class SelectionSort_2 {
 
@@ -12,20 +13,31 @@ public class SelectionSort_2 {
     }
 
     private static int[] sort(final int[] arr) {
-         final int[] arrayToSort = Arrays.copyOf(arr, arr.length);
+        Objects.requireNonNull(arr, "Array cannot be null");
 
+        if (isEmpty(arr)) {
+            return new int[]{};
+        }
+
+        final int[] arrayToSort = Arrays.copyOf(arr, arr.length);
         for (int i = 0; i < arrayToSort.length - 1; i++) {
+            int smallestIndex = i;
             for (int j = i + 1; j < arrayToSort.length; j++) {
-                final int currentItem = arrayToSort[i];
-                final int nextItem = arrayToSort[j];
-                if (currentItem > nextItem) {
-                    arrayToSort[j] = currentItem;
-                    arrayToSort[i] = nextItem;
+                if (arrayToSort[smallestIndex] > arrayToSort[j]) {
+                    smallestIndex = j;
                 }
             }
+
+            final int temp = arrayToSort[i];
+            arrayToSort[i] = arrayToSort[smallestIndex];
+            arrayToSort[smallestIndex] = temp;
         }
 
         return arrayToSort;
+    }
+
+    private static boolean isEmpty(int[] arr) {
+        return arr.length == 0;
     }
 
 }
