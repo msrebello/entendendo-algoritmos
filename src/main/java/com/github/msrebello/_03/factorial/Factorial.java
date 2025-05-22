@@ -1,4 +1,4 @@
-package com.github.msrebello._03;
+package com.github.msrebello._03.factorial;
 
 public class Factorial {
 
