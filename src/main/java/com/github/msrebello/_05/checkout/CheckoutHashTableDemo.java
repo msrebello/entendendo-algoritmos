@@ -1,4 +1,4 @@
-package com.github.msrebello._05;
+package com.github.msrebello._05.checkout;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
